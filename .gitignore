@@ -1,0 +1,80 @@
+##############################################################################
+# IDE stuff
+###############################################################################
+
+# Idea (PHPStorm)
+/.idea/workspace.xml
+#/.idea
+
+# Netbeans
+/.nbproject
+/nbproject/
+
+.metadata
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# Eclipse Core
+.project
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# PyDev specific (Python IDE for Eclipse)
+*.pydevproject
+
+# CDT-specific (C/C++ Development Tooling)
+.cproject
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Java annotation processor (APT)
+.factorypath
+
+# PDT-specific (PHP Development Tools)
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# Tern plugin
+.tern-project
+
+# TeXlipse plugin
+.texlipse
+
+# STS (Spring Tool Suite)
+.springBeans
+
+# Code Recommenders
+.recommenders/
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# npm
+*npm-debug.log
+
+###############################################################################
+# Tools cache
+###############################################################################
+
+.cache
+.composer
+.config
+.npm
+.v8flags*
+
+/.idea
+/vendor
+composer.lock

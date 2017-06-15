@@ -1,0 +1,58 @@
+{
+  "name": "proemergotech/correlate-php-laravel",
+  "description": "Middleware to handle incoming correlation id header for Laravel and Lumen",
+  "keywords": [
+  	"microservice",
+  	"uuid",
+  	"dispatcher",
+  	"log",
+  	"correlate",
+  	"laravel",
+  	"lumen",
+  	"psr-7",
+  	"slim"
+  ],
+  "type": "library",
+  "homepage": "https://github.com/proemergotech/correlate-php-core",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "ProEmergotech Kft",
+      "email": "support@proemergotech.com",
+      "homepage": "http://www.proemergotech.com/"
+    },
+    {
+      "name": "Soma Szelpal",
+      "email": "soma.szelpal@proemergotech.com"
+    },
+    {
+	    "name": "Soma Szelpal",
+	    "email": "szelpalsoma@gmail.com"
+  	}
+  ],
+	"require": {
+    "proemergotech/correlate-php-core": "dev-master",
+    "proemergotech/correlate-php-monolog": "dev-master",
+    "illuminate/http": "^5.4",
+    "psr/log": "1.*",
+    "monolog/monolog": "1.*"
+  },
+  "require-dev": {
+    "fzaninotto/faker": "~1.4",
+    "phpunit/phpunit": "^5.0",
+    "mockery/mockery": "~0.9",
+    "squizlabs/php_codesniffer": "^2.8"
+  },
+  "autoload": {
+    "psr-4": {
+      "ProEmergotech\\Correlate\\Laravel\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ProEmergotech\\Correlate\\Laravel\\Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
