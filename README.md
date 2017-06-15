@@ -36,6 +36,32 @@ $app->register(\ProEmergotech\Correlate\Laravel\LaravelCorrelateServiceProvider:
 
 ```
 
+## Usage
+
+This middleware automatically adds correlation id (coming from request header) to every log messages.
+
+There are some macros added to request object if you want to work with correlation id.
+
+Using macros via Request facade:
+
+```php
+if (Request::hasCorrelationId()) {
+  $cid = Request::getCorrelationId();
+}
+// or if you can change the ID
+Request::setCorrelationId(\ProEmergotech\Correlate\Correlate::id());
+```
+
+Using macros via request object:
+
+```php
+if ($request->hasCorrelationId()) {
+  $cid = $request->getCorrelationId();
+}
+// or if you can change the ID
+$request->setCorrelationId(\ProEmergotech\Correlate\Correlate::id());
+```
+
 ## Contributing
 
 See `CONTRIBUTING.md` file.
