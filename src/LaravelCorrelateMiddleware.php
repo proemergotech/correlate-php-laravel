@@ -16,7 +16,7 @@ class LaravelCorrelateMiddleware
     protected $log;
 
     /**
-     * @param LoggerInterface $logger
+     * @param LoggerInterface $log
      */
     public function __construct(LoggerInterface $log = null)
     {

@@ -58,16 +58,6 @@ This middleware automatically adds correlation id (coming from request header) t
 
 There are some macros added to request object if you want to work with correlation id.
 
-Using macros via Request facade:
-
-```php
-if (Request::hasCorrelationId()) {
-  $cid = Request::getCorrelationId();
-}
-// or if you can change the ID
-Request::setCorrelationId(\ProEmergotech\Correlate\Correlate::id());
-```
-
 Using macros via request object:
 
 ```php
