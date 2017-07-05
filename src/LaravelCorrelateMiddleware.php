@@ -72,7 +72,13 @@ class LaravelCorrelateMiddleware
 
         $cid = $request->headers->get(Correlate::getHeaderName());
 
-        $this->log->pushProcessor(new CorrelateProcessor(Correlate::getParamName(), $cid));
+        $processor = new CorrelateProcessor(Correlate::getParamName(), $cid);
+
+        if ($this->log instanceof \Monolog\Logger) {
+            $this->log->pushProcessor($processor);
+        } elseif (method_exists($this->log, 'getMonolog')) {
+            $this->log->getMonolog()->pushProcessor($processor);
+        }
 
         $response = $next($request);
 
