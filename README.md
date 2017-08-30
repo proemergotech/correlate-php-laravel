@@ -29,17 +29,7 @@ composer require proemergotech/correlate-php-laravel
 
 ## Setup for Laravel 5
 
-Add serverice provider to config/app.php in your Laravel project.
-
-```php
-// config/app.php
-
-    'providers' => [
-        ...
-
-        \ProEmergotech\Correlate\Laravel\LaravelCorrelateServiceProvider::class,
-    ],
-```
+Add the `ProEmergotech\Correlate\Laravel\LaravelCorrelateMiddleware` middleware to the $middleware property of your app/Http/Kernel.php class.
 
 ## Setup for Lumen 5
 
