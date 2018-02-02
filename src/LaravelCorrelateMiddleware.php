@@ -2,22 +2,18 @@
 
 namespace ProEmergotech\Correlate\Laravel;
 
+use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Monolog\Logger;
 use Psr\Log\LoggerInterface;
 use ProEmergotech\Correlate\Monolog\CorrelateProcessor;
 use ProEmergotech\Correlate\Correlate;
 
 class LaravelCorrelateMiddleware
 {
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
+    /** @var LoggerInterface */
     protected $log;
 
-    /**
-     * @param LoggerInterface $log
-     */
     public function __construct(LoggerInterface $log = null)
     {
         $this->log = $log;
@@ -26,8 +22,7 @@ class LaravelCorrelateMiddleware
     }
 
     /**
-     * Install macros for request and response classes
-     * @return void
+     * Install macros for request and response classes.
      */
     protected function installMacros()
     {
@@ -59,31 +54,27 @@ class LaravelCorrelateMiddleware
 
     /**
      * @param Request $request
-     * @param \Closure $next
+     * @param Closure $next
+     *
      * @return mixed
      */
-    public function handle(Request $request, \Closure $next)
+    public function handle(Request $request, Closure $next)
     {
         if (!$request->headers->has(Correlate::getHeaderName())) {
-            $request->headers->set(
-                Correlate::getHeaderName(), (string) Correlate::id()
-            );
+            $request->headers->set(Correlate::getHeaderName(), (string)Correlate::id());
         }
 
-        $cid = $request->headers->get(Correlate::getHeaderName());
+        $processor = new CorrelateProcessor(
+            Correlate::getParamName(),
+            $request->headers->get(Correlate::getHeaderName())
+        );
 
-        $processor = new CorrelateProcessor(Correlate::getParamName(), $cid);
-
-        if ($this->log instanceof \Monolog\Logger) {
+        if ($this->log instanceof Logger) {
             $this->log->pushProcessor($processor);
         } elseif (method_exists($this->log, 'getMonolog')) {
             $this->log->getMonolog()->pushProcessor($processor);
         }
 
-        $response = $next($request);
-
-        $response->headers->set(Correlate::getHeaderName(), $cid);
-
-        return $response;
+        return $next($request);
     }
 }
