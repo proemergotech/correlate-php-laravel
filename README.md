@@ -4,7 +4,7 @@
 
 ## Overview
 
-It's very difficult to track a request accross the system when we are working with microservices. We came out a solution for that. We generate a unique version 4 uuid for every request and every service passes this id via request header to other services. We call this **correlation ID**.
+It's very difficult to track a request across the system when we are working with microservices. We came out with a solution for that. We generate a unique version 4 uuid for every request and every service passes this id via request headers to other services. We call this **correlation ID**.
 
 ## Packages
 
@@ -33,7 +33,7 @@ Add the `ProEmergotech\Correlate\Laravel\LaravelCorrelateMiddleware` middleware 
 
 ## Setup for Lumen 5
 
-Add serverice provider to bootstrap/app.php in your Lumen project.
+Add service provider to bootstrap/app.php in your Lumen project.
 
 ```php
 // bootstrap/app.php
@@ -44,9 +44,8 @@ $app->register(\ProEmergotech\Correlate\Laravel\LaravelCorrelateServiceProvider:
 
 ## Usage
 
-This middleware automatically adds correlation id (coming from request header) to every log messages.
-
-There are some macros added to request object if you want to work with correlation id.
+This middleware automatically adds correlation id (coming from request header) to every log message.
+There are some macros added to the request object if you want to work with correlation id.
 
 Using macros via request object:
 
@@ -64,7 +63,9 @@ See `CONTRIBUTING.md` file.
 
 ## Credits
 
-This package developed by [Soma Szélpál](https://github.com/shakahl/) at [Pro Emergotech Ltd.](https://github.com/proemergotech/).
+This package was developed by [Soma Szélpál](https://github.com/shakahl/) at [Pro Emergotech Ltd.](https://github.com/proemergotech/).
+
+Additional author is [Miklós Boros](https://github.com/cherubmiki) at [Pro Emergotech Ltd.](https://github.com/proemergotech/).
 
 ## License
 
